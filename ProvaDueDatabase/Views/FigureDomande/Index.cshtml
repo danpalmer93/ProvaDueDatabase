@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FigureDomande>
+@using ProvaDueDatabase.Models.Enity
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    binario
+                </th>
+                <th>
+                    descrizione
+                </th>
+                <th>
+                    filename
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var i in Model)
+                {
+                    <tr>
+                        <td>
+                            @i.Id
+                        </td>
+                        <td>
+                            @i.IdFigura
+                        </td>
+
+                        <td>
+                            @i.IdDomanda
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <button> <a asp-controller="FigureDomande" asp-action="Aggiungi"> Aggiungi </a> </button>
+    </div>

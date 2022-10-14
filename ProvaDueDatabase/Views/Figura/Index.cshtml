@@ -1,0 +1,48 @@
+﻿@model MyViewFigure
+
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    binario
+                </th>
+                <th>
+                    descrizione
+                </th>
+                <th>
+                    filename
+                </th>
+            </tr>
+        </thead>
+            <tbody>
+            @{  
+                    foreach (var i in Model.figures )
+                    {
+                                    <tr>
+                                        <td>
+                                            @i.Id
+                                        </td>
+                                       
+                                        <td>
+                                             <img src="@i.To64Imagine()" width="100px" height="auto" />
+                                        </td>
+                                       
+                                    </tr>
+                    }
+            }
+
+            </tbody>
+        </table>
+
+
+        <a asp-controller="Figura" asp-action="Trova">Trova</a>
+        <button> <a asp-controller="Figura" asp-action="Crea"> Crea </a></button>
+
+
+    </div>

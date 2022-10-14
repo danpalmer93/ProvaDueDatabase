@@ -1,0 +1,41 @@
+﻿@model MyViewFigure
+
+
+
+@{
+}
+
+
+
+<div>
+    <table>
+        <tbody>
+            @foreach (var item in Model.figures)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.To64Imagine()" width="100px" height="auto">
+                    </td>
+                    <td>
+                        <form method="post">
+                        
+                        <input type="number" asp-for="idFigura" value="@item.Id" hidden>
+                        <label> Seleziona Domanda</label>
+                            <select asp-for="idDomanda">
+                            @foreach (var domanda in Model.domande)
+                            {
+                                <option  value="@domanda.Id">@domanda.TestoDomanda</option>
+                            }
+                        </select>
+                        <button asp-controller="FigureDomande" asp-action="Aggiungi" > Aggiungi</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+
+
+</div>

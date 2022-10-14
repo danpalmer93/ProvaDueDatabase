@@ -1,0 +1,46 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*.emojiSelected {
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(126,194,255,0.6851073192949055) 51%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(126,194,255,0.6851073192949055) 51%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(126,194,255,0.6851073192949055) 51%, rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+}*/
+
+.emojiSelected {
+    opacity:1;
+}
+
+.emojiNotSelected {
+    opacity:0.5;
+}
+
+.focus {
+    position: absolute;
+    font-size: +200%;
+    z-index: 1;
+    
+}
+
+.box_rounded {
+    border: solid 1px ghostwhite; 
+    border-radius:10px 10px;
+}

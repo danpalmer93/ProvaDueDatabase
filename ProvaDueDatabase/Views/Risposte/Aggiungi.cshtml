@@ -1,0 +1,25 @@
+﻿@model ProvaDueDatabase.Models.Enity.Risposta
+@{
+}
+
+<div>
+    <form method="post">
+        <label>
+            Testo Risposta
+        </label>
+        <input type="text" asp-for="TestoRisposta" />
+
+        <label>
+            Id Figura - Domanda
+        </label>
+        <input type="number" asp-for="IdFiguraDomanda"/>
+
+        <label>
+            Peso Risposta
+        </label>
+        <input type="number" asp-for="Peso"/>
+        <button asp-controller="Risposte" asp-action="Aggiungi"> AGgiungi </button>
+
+
+    </form>
+</div>

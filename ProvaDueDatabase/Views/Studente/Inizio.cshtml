@@ -1,0 +1,27 @@
+﻿@model ProvaDueDatabase.Models.Utente
+@{
+}
+
+
+<input type="text" id="nome"/>
+<input type="text" id="cognome" />
+<button onclick="setSession();">Clicca</button>
+
+<button onclick="dammi();"></button>
+
+<script>
+    function setSession(){
+        let nome = document.getElementById("nome").value;
+        let cognome = document.getElementById("cognome").value;
+        let userID = nome+cognome;
+        sessionStorage.setItem("UserId",userID);
+        
+    }
+
+    function dammi(){
+        let a = sessionStorage.getItem("UserId");
+        console.log(a);
+    }
+    
+
+</script>

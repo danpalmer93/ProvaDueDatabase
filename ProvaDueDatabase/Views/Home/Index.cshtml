@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="errore"></div>
+
+
+<div>
+    <div class="text-center text-black-50 border border-light rounded" style="margin-top:30px; margin-bottom:30px; ">
+        <h1 class="display-4">Benvenuto al Test di Rorschach</h1>
+   </div>
+    
+    
+    <div class=" text-center ">
+        <button class="btn btn-primary " id="btn-inizia">Inizia Test</button>
+    </div>
+   
+    <div class="d-block  text-center">
+        
+        <div  style="padding:10px;" class=" d-inline-flex ">
+            <button class="btn btn-light w-100  d-none" id="btn-docente" style="margin:10px;" >Docente</button>
+            <button class="btn btn-light w-100  d-none" id="btn-studente" style="margin:10px;">Studente</button>
+        </div>
+
+        
+        <div style="margin-top:20px; padding:10px; height:300px" class="d-grid justify-content-center"> 
+            <div class="text-start d-block" style="padding-left:16px">
+                <label class="text-primary fst-italic fw-bold" style="font-size:20px" id="label-form"></label>
+            </div>
+            <div style="width:400px; " class="" id="box-form" >
+                <label id="lbl-utente-nome" class="d-none">Nome</label>
+                <input id="inp-utente-nome" type="text" class="d-none " />
+
+                <label id="lbl-utente-cognome" class="d-none">Cognome</label>
+                <input id="inp-utente-cognome" type="text" class="d-none" />
+
+                <button id="inp-button" class="d-none" style="margin-top:10px">Avvia Sessione</button>
+
+                <label id="lbl-utente-st-nome" class="d-none studente">Nome</label>
+                <input id="inp-utente-st-nome" type="text" class="d-none " />
+
+                <label id="lbl-utente-st-cognome" class="d-none studente">Cognome</label>
+                <input id="inp-utente-st-cognome" type="text" class="d-none" />
+
+                <button id="inp-button-studente" class="d-none" style="margin-top:10px">Avvia Sessione</button>
+            </div>
+        </div>
+        
+        @*<div class="d-block text-start"> 
+            <label>a</label>
+            <div class="border">
+                a
+            </div>
+        </div>*@
+        
+    </div>
+    
+</div>
+
+
+<script>
+
+    document.getElementById("btn-inizia").addEventListener("click", function(event){
+        document.getElementById("btn-docente").className = "btn btn-light w-100 ";
+        document.getElementById("btn-studente").className = "btn btn-light w-100 ";
+    });
+
+    // Event Listener pulsante Docente
+    document.getElementById("btn-docente").addEventListener("click", function(event){
+        document.getElementById("lbl-utente-nome").className = "form-label";
+        document.getElementById("inp-utente-nome").className = "form-control";
+        document.getElementById("lbl-utente-cognome").className = "form-label";
+        document.getElementById("inp-utente-cognome").className = "form-control";
+        document.getElementById("inp-button").className = "btn btn-secondary";
+        document.getElementById("label-form").textContent="Docente";
+        document.getElementById("box-form").className = "border rounded-2 p-3 "
+
+        // Nascondo input studente
+        document.getElementById("lbl-utente-st-nome").className = "d-none";
+        document.getElementById("inp-utente-st-nome").className = "d-none";
+        document.getElementById("lbl-utente-st-cognome").className = "d-none";
+        document.getElementById("inp-utente-st-cognome").className = "d-none";
+        document.getElementById("inp-button-studente").className = "d-none";
+       
+        
+    });
+
+    //Listner pulsante Studente
+    document.getElementById("btn-studente").addEventListener("click", function (event) {
+        document.getElementById("lbl-utente-st-nome").className = "form-label ";
+        document.getElementById("inp-utente-st-nome").className = "form-control";
+        document.getElementById("lbl-utente-st-cognome").className = "form-label";
+        document.getElementById("inp-utente-st-cognome").className = "form-control";
+        document.getElementById("inp-button-studente").className = "btn btn-secondary";
+        document.getElementById("label-form").textContent = "Studente";
+        document.getElementById("box-form").className = "border rounded-2 p-3"
+
+        //Nascondo input docente
+        document.getElementById("lbl-utente-nome").className = "d-none";
+        document.getElementById("inp-utente-nome").className = "d-none";
+        document.getElementById("lbl-utente-cognome").className = "d-none";
+        document.getElementById("inp-utente-cognome").className = "d-none";
+        document.getElementById("inp-button").className = "d-none";
+        
+    });
+
+    document.getElementById("inp-button").addEventListener("click", function(event){
+        sessionStorage.setItem("nome", document.getElementById("inp-utente-nome").value);
+        sessionStorage.setItem("cognome", document.getElementById("inp-utente-cognome").value);
+        window.location="/Docente";
+    });
+
+    document.getElementById("inp-button-studente").addEventListener("click", function (event) {
+        sessionStorage.setItem("nome", document.getElementById("inp-utente-st-nome").value);
+        sessionStorage.setItem("cognome", document.getElementById("inp-utente-st-cognome").value);
+
+        let nome = sessionStorage.getItem("nome");
+        let cognome = sessionStorage.getItem("cognome");
+
+        if((nome===null|| nome==="")||(cognome===null|| cognome==="")){
+            
+            alert("INSERISCI NOME E COGNOME");
+
+        }else{
+
+            window.location = "/Studente";
+        }
+
+        
+    });
+
+
+
+</script>

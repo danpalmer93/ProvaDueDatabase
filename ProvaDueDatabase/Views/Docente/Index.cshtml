@@ -1,0 +1,196 @@
+﻿@model ProvaDueDatabase.Models.ViewModel.ViewModelDocente
+
+@{
+}
+@*onload="Connetti();"*@
+
+
+<body class="ms-0">
+   
+    <div class="text-end text-black-50 border border-light rounded mb-1" style="margin-top:10px; " >
+        <h1 style="margin-right:10px" class="mb-0"> Docente </h1>
+    </div>
+    <label class="text-danger d-none">@ViewData["errore"]</label>
+   
+<div class="d-flex mt-0 row mb-4"  >
+        <div id="figura" class="col-7 mt-4">
+        <img id="imgFigura" src="" />
+        </div>
+
+        <div id="box-risposte" class="d-none col-4" style="margin-left:1%;" >
+            @*/ Risposta con Peso Maggiore*@
+            <div class="text-center" id="tabella_risposte">
+                <table class="table table-borderless w-100" >
+
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="text-center text-primary">Le 5 Risposte più frequenti</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class=" bg-success bg-opacity-50">
+                            <td class="w-25">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                                    <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+                                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                                </svg>
+                            </td>
+                            <td>
+                                <label class="text-lg-center" id="rispostaDefault"></label>
+                                <input id="inp-rispostaDefault" type="text" hidden />
+                            </td>
+                            <td>
+                                <button id="btn-0" class="btn btn-primary btn-sm">Seleziona</button>
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: rgba(40,167,69,20%)">
+                            <td class="w-25">
+                            </td>
+                            <td>
+                                <label class="text-black-50 text-lg-center" id="labelRisposta1"></label>
+                                <input type="text" id="rispostaSelezionata1" hidden />
+                            </td>
+                            <td>
+                                <button id="btn-1" class="btn btn-primary btn-sm">Seleziona</button>
+                            </td>
+                        </tr>
+                        <tr style="background-color: rgba(40,167,69,15%)">
+                            <td>
+                            </td>
+                            <td>
+                                <label class="text-black-50 text-lg-center" id="labelRisposta2"></label>
+                                <input type="text" id="rispostaSelezionata2" hidden />
+                            </td>
+                            <td>
+                                <button id="btn-2" class="btn btn-primary btn-sm">Seleziona</button>
+                            </td>
+                        </tr>
+                        <tr style="background-color: rgba(40,167,69,10%)">
+                            <td>
+                            </td>
+                            <td>
+                                <label class="text-black-50 text-lg-center" id="labelRisposta3"></label>
+                                <input type="text" id="rispostaSelezionata3" hidden />
+                            </td>
+                            <td>
+                                <button id="btn-3" class="btn btn-primary btn-sm">Seleziona</button>
+                            </td>
+                        </tr>
+                        <tr style="background-color: rgba(40,167,69,5%)">
+                            <td>
+                            </td>
+                            <td>
+                                <label class="text-black-50 text-lg-center" id="labelRisposta4"></label>
+                                <input type="text" id="rispostaSelezionata4" hidden />
+                            </td>
+                            <td>
+                                <button id="btn-4" class="btn btn-primary btn-sm">Seleziona</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="countUno" style="text-align:center">
+                <label class="text-primary">Tutte le altre Risposte</label>
+            </div>
+
+            <div id="box-risposta-libera" class="mt-1 text-center border-1 border-primary">
+                <label id="lbl-risp-libera" class="text-primary">Scrivi la risposta libera</label>
+                <textarea class="w-100 form-text" id="rispostaLibera"></textarea>
+            </div>
+            <div class="d-grid text-center" >
+                <label class="text-primary fst-italic fw-bold " style="font-size:13px"> Imposta Espressione</label>
+            </div>
+            <div id="emoji" class="d-inline-flex row text-center">
+                @*Neutra*@
+                <div class="d-grid col-2 emojiSelected">
+                        <label id="0" onmouseover="iconFocus(0);" onmouseout="iconNormal(0);" onclick="setEspressione(0);"> &#x1F610</label>
+                </div>
+                @*Sorriso*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="1" onmouseover="iconFocus(1);" onmouseout="iconNormal(1);" onclick="setEspressione(1);" > &#x1F642</label>
+                </div>
+                @*Risata*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="2" onmouseover="iconFocus(2);" onmouseout="iconNormal(2);" onclick="setEspressione(2);"> &#x1F603</label>
+                </div>
+                @*Triste*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="3" onmouseover="iconFocus(3);" onmouseout="iconNormal(3);" onclick="setEspressione(3);"> &#x2639</label>
+                </div>
+                @*Arrabbiata*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="4" onmouseover="iconFocus(4);" onmouseout="iconNormal(4);" onclick="setEspressione(4);"> &#x1F620</label>
+                </div>
+                @*Impaurita*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="5" onmouseover="iconFocus(5);" onmouseout="iconNormal(5);" onclick="setEspressione(5);" > &#x1F628</label>
+                </div>
+                @*Disgustata*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="6" onmouseover="iconFocus(6);" onmouseout="iconNormal(6);" onclick="setEspressione(6);"> &#x1F922</label>
+                </div>
+                @*Sorpresa*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="7" onmouseover="iconFocus(7);" onmouseout="iconNormal(7);" onclick="setEspressione(7);"> &#x1F62E</label>
+                </div>
+                @*Pensierosa*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="8" onmouseover="iconFocus(8);" onmouseout="iconNormal(8);" onclick="setEspressione(8);"> &#x1F914</label>
+                </div>
+                @*Imbarazzata*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="9" onmouseover="iconFocus(9);" onmouseout="iconNormal(9);" onclick="setEspressione(9);"> &#x1F633</label>
+                </div>
+                @*Paura*@
+                <div class="d-grid col-2 emojiNotSelected">
+                    <label id="10" onmouseover="iconFocus(10);" onmouseout="iconNormal(10);" onclick="setEspressione(10);"> &#x1F631</label>
+                </div>
+                
+            </div>
+        </div>
+</div>
+<div class="bg-secondary bg-opacity-10 mt-1" >
+        <div class="d-flex row w-100 d-none " id="box-domanda-risposta" style="padding:3px">
+            <div class="col 5 d-inline-flex w-25">
+                <h4 style="margin-left:10px">Domanda:</h4>
+                <h4 id="domanda-show" class="text-primary" style="margin-left:10px"></h4>
+            </div>
+            <div class="col 5 d-inline-flex w-25">
+                <h4 style="margin-left:10px"> Risposta:</h4>
+                <h4 id="risposta-show" class="text-primary" style="margin-left:10px"></h4>
+            </div>
+            <div class="col 2 text-center ">
+                <button id="rispondi" class="btn btn-primary"> Rispondi </button>
+                <button id="restart" class="btn btn-danger">Restart</button>
+            </div>
+        </div>
+</div>
+   
+
+<div>
+        <div id="div-SelezioneGruppo">
+            <label >Seleziona Sessione</label>
+            <select id="selezioneGruppi" ></select>
+            <button id="seleziona" >Seleziona</button>
+        </div>
+
+</div>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    @*<script src="/js/DocenteChat.js"></script>*@
+    <script src="/js/DocenteChat - Copia.js"></script>
+
+    <script type="text/javascript">
+         ( async  ()=>{
+            await Connetti();
+         })()   
+    </script>
+</body>
+
+
+
+
+

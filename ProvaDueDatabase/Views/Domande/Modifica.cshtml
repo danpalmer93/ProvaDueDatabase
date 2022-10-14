@@ -1,0 +1,9 @@
+﻿@model ProvaDueDatabase.Models.Dto.DomandaDto
+
+<form method="post">
+    
+    <input type="numer" vale="@Model.Id" asp-for="Id" hidden />
+    <label>Testo</label>
+    <input type="text" value="@Model.TestoDomanda" asp-for="TestoDomanda"/>
+    <button  asp-controller="Domande" asp-action="Modifica"> Modifica </button>
+</form>

@@ -1,0 +1,43 @@
+﻿@using ProvaDueDatabase.Models.Dto
+@model IEnumerable<DomandaDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table>
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> Testo Domanda </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.TestoDomanda
+                </td>
+                <td>
+                    @item.Default
+                </td>
+                <td>
+                    <a asp-controller="Domande" asp-action="Rimuovi" asp-route-id="@item.Id"> Rimuovi </a>
+                </td>
+                 <td>
+                    <a asp-controller="Domande" asp-action="Modifica" asp-route-id="@item.Id"> Modifica </a>
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button> <a asp-controller="Domande" asp-action="Crea">Crea</a></button>
+

@@ -1,0 +1,36 @@
+﻿@using ProvaDueDatabase.Models.Enity
+@model IEnumerable<Risposta>
+@{
+}
+
+<table>
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>TestoDomanda</th>
+        <th>ID_Figura_Domanda</th>
+        <th>Peso</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+         <tr>
+             <td> @item.Id</td>
+         
+            <td>
+                 @item.TestoRisposta
+            </td>
+            <td>
+                 @item.IdFiguraDomanda
+            </td>
+            <td>
+                @item.Peso
+            </td>
+         </tr>
+        }
+    </tbody>
+
+</table>
+
+<button><a asp-controller="Risposte" asp-action="Aggiungi" >Crea Risposta</a> </button>

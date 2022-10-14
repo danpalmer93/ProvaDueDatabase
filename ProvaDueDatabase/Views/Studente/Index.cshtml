@@ -1,0 +1,93 @@
+﻿@model ProvaDueDatabase.Models.ViewModel.ViewModelStudente
+@{
+}
+
+<style>
+.divInizia {
+        margin-top: 20px;
+        text-align:center;
+        margin-left:20px;
+    }
+.snack{
+        visibility: hidden; 
+        min-width: 250px; 
+        margin-left: -125px;
+        background-color: mediumseagreen; 
+        color: #fff; 
+        text-align: center; 
+        border-radius: 2px; 
+        padding: 16px; 
+        position: fixed;
+        z-index: 1; 
+        left: 50%; 
+        bottom: 30px;
+}
+.snack-show{
+        visibility: visible; 
+        min-width: 250px; 
+        margin-left: -125px; 
+        background-color: mediumseagreen; 
+        color: #fff; 
+        text-align: center; 
+        border-radius: 2px; 
+        padding: 16px; 
+        position: fixed; 
+        z-index: 1; 
+        left: 50%; 
+        bottom: 30px;
+        
+}
+
+</style>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script type="text/javascript" src="//vhss.oddcast.com/vhost_embed_functions_v4.php?acc=8561357&js=0"></script>
+
+
+<body onload="Connetti();">
+
+    <div class="text-end text-black-50 border border-light rounded" style="margin-top:30px; margin-bottom:30px">
+        <h1 style="margin-right:10px;"> Studente </h1>
+    </div>
+
+<div class="m-0 d-flex">
+    <div id="immagineSlide" class="row w-50 " >
+            
+        <div style=" align-items: center; margin-left:0px; padding-right:0px" class="col-1 d-grid ">
+                <a id="figuraIndietro" class="d-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150%" height="150%" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16" >
+                        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
+                    </svg>
+                </a>
+        </div>
+            
+            <div class="col-10 w90" style="height: 400px;" id="box-figure">
+                        <input  type="text" hidden  class="selezionato"/>
+                        <input  type="text" hidden  class="none" />
+            </div>
+
+            <div style="align-items: center; margin-right:0px; padding-left:0px" class="col-1 d-grid">
+                <a id="figuraAvanti" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150%" height="150%" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16" style="position:relative; right:45%">
+                    <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="d-block  row">               
+                <div class="divInizia ">
+                    <label class="text-primary">Sei alla domanda n.</label>
+                    <p id="numeroDomandadellaFigura"></p>
+                </div>
+            </div>
+
+    </div>
+    <div class="w-50 d-flex" style="padding-left:30px" id="avatar">  
+                <script type="text/javascript">AC_VHost_Embed(8561357, 400, 600, "", 1, 0, 2752938, 0, 1, 0, "5UvhWFAGyzb8UPKhD8c5k6gyf0ewNFyF", 0, 0);</script>    
+    </div>   
+</div>
+<div id="snack-bar" class="snack"> Il Docente si è collegato</div>
+
+</body>
+
+<script type="text/javascript" src="/js/StudenteChat - Copia.js"></script>
